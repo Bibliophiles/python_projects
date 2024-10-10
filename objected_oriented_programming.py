@@ -113,3 +113,6 @@ print(dev_1)
 print(str(dev_1))
 print(dev_1 + mgr_1)
 print(len(emp2))
+
+print(4 + 6)
+print(int.__add__(3,8))
