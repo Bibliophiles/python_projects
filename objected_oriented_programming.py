@@ -9,11 +9,28 @@ class Employee:
         self.first = first
         self.last = last
         self.pay = pay
-        self.email = first + last + "@company.com"
         Employee.num_of_emps += 1
 
+    @property
+    def email(self):
+        return f"{self.first}.{self.last}@company.com"
+
+    @property
     def fullname(self):
         return(f"{self.first} {self.last}")
+    
+    @fullname.setter
+    def fullname(self, name):
+        first, last = name.split(" ")
+        self.first = first
+        self.last = last
+
+    @fullname.deleter
+    def fullname(self):
+        print("Delete Name!")
+        self.first = None
+        self.last = None
+        
     
     def firstnameAndSalary(self):
         return(f"{self.first} {self.pay}")
@@ -99,6 +116,7 @@ my_date = datetime.date(2000, 1, 22)
 
 mgr_1.add_emp(emp2)
 
+emp2.fullname = "Ganan Aebena"
 #print(mgr_1.email)
 #mgr_1.all_emps()
 #print(mgr_1.employees[0].fullname())
@@ -109,10 +127,16 @@ mgr_1.remove_emp(dev_1)
 #print(isinstance(mgr_1, Employee))
 #print(issubclass(Manager, Developer))
 
-print(dev_1)
-print(str(dev_1))
-print(dev_1 + mgr_1)
-print(len(emp2))
+#print(dev_1)
+#print(str(dev_1))
+#print(dev_1 + mgr_1)
+#print(len(emp2))
 
-print(4 + 6)
-print(int.__add__(3,8))
+#print(4 + 6)
+#print(int.__add__(3,8))
+
+print(emp2.first)
+print(emp2.email)
+print(emp2.fullname)
+
+del emp2.fullname
